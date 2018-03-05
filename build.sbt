@@ -9,8 +9,8 @@ val slf4jLog4jArtifact = "slf4j-log4j12"
 
 lazy val commonSettings = Seq(
   organization := "me.jeffshaw.kafka",
-  scalaVersion := "2.11.8",
-  crossScalaVersions := Seq("2.10.6", "2.11.8"),
+  scalaVersion := "2.11.12",
+  crossScalaVersions := Seq("2.10.7", "2.12.4"),
   homepage := Some(url("https://github.com/shawjef3/scalatest-embedded-kafka")),
   parallelExecution in Test := false,
   logBuffered in Test := false,
@@ -34,6 +34,7 @@ lazy val publishSettings = Seq(
   pomIncludeRepository := { _ =>
     false
   },
+  publishTo := sonatypePublishTo.value,
   pomExtra :=
     <scm>
       <url>https://github.com/manub/scalatest-embedded-kafka</url>
@@ -63,16 +64,15 @@ lazy val root = (project in file("."))
   .settings(publishTo := Some(Resolver.defaultLocal))
   .aggregate(embeddedKafka, kafkaStreams)
 
-
 lazy val embeddedKafka = (project in file("embedded-kafka"))
-  .settings(name := "scalatest-embedded-kafka_" + kafkaVersion.replace('.', '_'))
+  .settings(name := "scalatest-embedded-kafka_" + kafkaVersion)
   .settings(publishSettings: _*)
   .settings(commonSettings: _*)
   .settings(commonLibrarySettings)
 //  .settings(releaseSettings: _*)
 
 lazy val kafkaStreams = (project in file("kafka-streams"))
-  .settings(name := "scalatest-embedded-kafka-streams" + kafkaVersion.replace('.', '_'))
+  .settings(name := "scalatest-embedded-kafka-streams" + kafkaVersion)
   .settings(publishSettings: _*)
   .settings(commonSettings: _*)
   .settings(commonLibrarySettings)
