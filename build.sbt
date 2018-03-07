@@ -23,8 +23,8 @@ lazy val commonLibrarySettings = libraryDependencies ++= Seq(
   "org.apache.kafka" %% "kafka" % kafkaVersion exclude(slf4jLog4jOrg, slf4jLog4jArtifact),
   "org.apache.zookeeper" % "zookeeper" % "3.4.8" exclude(slf4jLog4jOrg, slf4jLog4jArtifact),
   "org.apache.avro" % "avro" % "1.7.7" exclude(slf4jLog4jOrg, slf4jLog4jArtifact),
-  "com.typesafe.akka" %% "akka-actor" % "2.3.14" % Test,
-  "com.typesafe.akka" %% "akka-testkit" % "2.3.14" % Test
+  "com.typesafe.akka" %% "akka-actor" % "2.5.11" % Test,
+  "com.typesafe.akka" %% "akka-testkit" % "2.5.11" % Test
 )
 
 lazy val publishSettings = Seq(

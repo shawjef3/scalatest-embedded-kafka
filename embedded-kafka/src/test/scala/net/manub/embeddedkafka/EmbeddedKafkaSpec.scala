@@ -19,7 +19,7 @@ class EmbeddedKafkaSpec extends EmbeddedKafkaSpecSupport with EmbeddedKafka {
   implicit val config = PatienceConfig(Span(2, Seconds), Span(100, Milliseconds))
 
   override def afterAll(): Unit = {
-    system.shutdown()
+    system.terminate()
   }
 
   "the withRunningKafka method" should {
@@ -311,5 +311,5 @@ class EmbeddedKafkaSpec extends EmbeddedKafkaSpecSupport with EmbeddedKafka {
     props
   }
 
-  val ConsumerPollTimeout = 3000
+  val ConsumerPollTimeout = 10000
 }

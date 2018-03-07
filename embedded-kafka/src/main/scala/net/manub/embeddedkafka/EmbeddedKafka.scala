@@ -216,7 +216,7 @@ sealed trait EmbeddedKafkaSupport {
     val message = Try {
       consumer.subscribe(List(topic))
       consumer.partitionsFor(topic) // as poll doesn't honour the timeout, forcing the consumer to fail here.
-      val records = consumer.poll(5000)
+      val records = consumer.poll(10000)
       if (records.isEmpty) {
         throw new TimeoutException(
           "Unable to retrieve a message from Kafka in 5000ms")
